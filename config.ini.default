@@ -1,0 +1,7 @@
+[global]
+mqtt-host=localhost
+mqtt-port=1883
+
+[secret]
+remote-mqtt-host=
+remote-mqtt-port=
