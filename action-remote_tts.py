@@ -17,6 +17,7 @@ except :
 
 remote_mqtt = mqtt.Client()
 remote_mqtt.connect(config.get('secret').get('remote-mqtt-host'), int(config.get('secret').get('remote-mqtt-port')))
+remote_mqtt.loop_start()
 
 local_mqtt = mqtt.Client()
 
@@ -36,7 +37,6 @@ def on_message(client, userdata, msg):
             local_mqtt.publish('hermes/tts/sayFinished', msg.payload)
         else:
             print 'Could not publish : {}'.format(msg.topic)
-
 
 local_mqtt.on_connect = on_connect
 local_mqtt.on_disconnect = on_disconnect
